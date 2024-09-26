@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>身高體重計算</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        function calculate() {
+            var height = parseFloat(document.getElementById("txbHeight").value);
+            var weight = parseFloat(document.getElementById("txbWeight").value);
+            
+            if (isNaN(height) || isNaN(weight)) {
+                alert("請輸入有效的數值");
+                return;
+            }
+            
+            // BMI計算公式
+            var bmi = weight / (height / 100) ** 2;
+            
+            alert("您的BMI是: " + bmi.toFixed(2));
+        }
+
+        window.onload = function() {
+            document.getElementById("ButtonCal").onclick = calculate;
+        };
+    </script>
+</head>
+<body>
+    <div class="row" style="margin:10px">
+        <div class="col-md-12">
+            <div class="form-group">
+                身高(cm):
+                <input id="txbHeight" class="form-control" placeholder="請輸入身高" />
+                體重(kg):
+                <input id="txbWeight" class="form-control" placeholder="請輸入體重" />
+                <br />
+                <button class="btn btn-primary" id="ButtonCal">計算</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
